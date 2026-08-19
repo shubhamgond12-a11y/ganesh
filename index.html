@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Ganesh Ekta Pooja Samiti - Sultanpur Ke Raja</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bhagwa': '#E65100',
+                        'bhagwa-light': '#FF7043',
+                        'bhagwa-soft': '#FFF3E0',
+                        'gold': '#D4AF37',
+                        'gold-dark': '#A37C00',
+                        'maroon': '#7A0000',
+                        'maroon-dark': '#4A0000',
+                        'cream': '#FFFDF7',
+                        'cream-dark': '#F5EFEB',
+                    },
+                    fontFamily: {
+                        'cinzel': ['"Cinzel Decorative"', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'rozha': ['"Rozha One"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFDF7;
+            color: #2D1F18;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 112, 67, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+        }
+
+        /* Ambient particles canvas */
+        #particles-js, #petals-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #petals-canvas {
+            z-index: 30;
+        }
+
+        /* Text glow and shadow for light background */
+        .title-glow-light {
+            text-shadow: 0 2px 10px rgba(230, 81, 0, 0.15), 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 10px 30px -5px rgba(122, 0, 0, 0.08), 0 4px 12px rgba(230, 81, 0, 0.05);
+        }
+
+        /* Pulsing animation */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+
+        /* Floating effect */
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E65100;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-bhagwa selection:text-white flex flex-col justify-between min-h-screen">
+
+    <canvas id="particles-js"></canvas>
+    <canvas id="petals-canvas"></canvas>
+
+    <!-- Decorative Top Border Pattern -->
+    <div class="h-2 w-full bg-gradient-to-r from-maroon via-bhagwa to-gold"></div>
+
+    <div class="relative z-10 flex-grow flex flex-col items-center justify-between px-4 sm:px-6 py-6 md:py-10 max-w-5xl mx-auto w-full">
+        
+        <!-- Header Section -->
+        <header class="text-center flex flex-col items-center w-full">
+            <div class="inline-flex items-center justify-center space-x-2 bg-bhagwa-soft border border-bhagwa/20 px-4 py-1.5 rounded-full mb-4">
+                <span class="text-bhagwa text-xs sm:text-sm font-semibold tracking-widest uppercase">॥ श्री गणेशाय नमः ॥</span>
+            </div>
+
+            <h2 class="text-base sm:text-xl md:text-2xl font-cinzel font-bold text-maroon tracking-wider mb-4">
+                Shri Ganesh Ekta Pooja Samiti
+            </h2>
+
+        </header>
+
+        <!-- Main Hero Section -->
+        <main class="w-full flex flex-col items-center justify-center text-center my-4 sm:my-6">
+            
+            <div class="mb-6 sm:mb-8">
+                <h1 class="font-rozha text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-bhagwa via-maroon to-maroon-dark title-glow-light leading-tight">
+                    Sultanpur <span class="text-bhagwa font-normal text-3xl sm:text-5xl md:text-6xl">Ke</span> Raja
+                </h1>
+                
+                <p class="mt-3 text-lg sm:text-2xl font-cinzel font-bold text-bhagwa tracking-widest animate-pulse-glow">
+                    — COMING SOON —
+                </p>
+            </div>
+
+            <!-- Live Countdown Box -->
+            <div class="card-light rounded-2xl p-5 sm:p-8 w-full max-w-3xl mx-auto relative overflow-hidden">
+                <!-- Decorative Gold Corner Accents -->
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold rounded-tl-lg"></div>
+                <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold rounded-tr-lg"></div>
+                <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold rounded-bl-lg"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold rounded-br-lg"></div>
+
+                <p class="text-maroon font-semibold text-xs sm:text-sm tracking-widest uppercase mb-4 sm:mb-6">
+                    Awaiting Bappa's Grand Arrival
+                </p>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5" id="countdown">
+                    <!-- Days -->
+                    <div class="flex flex-col items-center justify-center bg-white/90 rounded-xl p-3 sm:p-5 border border-gold/30 shadow-sm transition-transform hover:-translate-y-1">
+                        <span id="days" class="text-3xl sm:text-5xl font-bold text-maroon font-cinzel">00</span>
+                        <span class="text-[10px] sm:text-xs text-gray-600 mt-1 uppercase font-semibold tracking-wider">Days</span>
+                    </div>
+                    <!-- Hours -->
+                    <div class="flex flex-col items-center justify-center bg-white/90 rounded-xl p-3 sm:p-5 border border-gold/30 shadow-sm transition-transform hover:-translate-y-1">
+                        <span id="hours" class="text-3xl sm:text-5xl font-bold text-maroon font-cinzel">00</span>
+                        <span class="text-[10px] sm:text-xs text-gray-600 mt-1 uppercase font-semibold tracking-wider">Hours</span>
+                    </div>
+                    <!-- Minutes -->
+                    <div class="flex flex-col items-center justify-center bg-white/90 rounded-xl p-3 sm:p-5 border border-gold/30 shadow-sm transition-transform hover:-translate-y-1">
+                        <span id="minutes" class="text-3xl sm:text-5xl font-bold text-maroon font-cinzel">00</span>
+                        <span class="text-[10px] sm:text-xs text-gray-600 mt-1 uppercase font-semibold tracking-wider">Minutes</span>
+                    </div>
+                    <!-- Seconds -->
+                    <div class="flex flex-col items-center justify-center bg-bhagwa-soft rounded-xl p-3 sm:p-5 border border-bhagwa/30 shadow-sm transition-transform hover:-translate-y-1">
+                        <span id="seconds" class="text-3xl sm:text-5xl font-bold text-bhagwa font-cinzel">00</span>
+                        <span class="text-[10px] sm:text-xs text-bhagwa font-semibold mt-1 uppercase tracking-wider">Seconds</span>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-4 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-gray-600 gap-2">
+                    <span>Ganesh Chaturthi: <strong class="text-maroon font-semibold">September 14, 2026</strong></span>
+                    
+                    <!-- Interactive Petal Shower Button -->
+                    <button id="flowerBtn" class="inline-flex items-center space-x-1.5 bg-gradient-to-r from-bhagwa to-gold text-white px-4 py-2 rounded-full font-medium text-xs shadow-md hover:brightness-110 transition active:scale-95 cursor-pointer">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        <span>🌸 Pushp Varsha (Blessings)</span>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Location & Footer Section -->
+        <footer class="w-full text-center mt-6">
+            <div class="card-light rounded-xl p-4 sm:p-6 max-w-2xl mx-auto flex flex-col items-center justify-center">
+                <div class="w-10 h-10 rounded-full bg-bhagwa-soft border border-bhagwa/30 flex items-center justify-center text-bhagwa mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold text-maroon">Swami Vivekanand Park</h3>
+                <p class="text-xs sm:text-sm text-gray-700 font-medium mt-0.5">Vivek Nagar, Sultanpur, Uttar Pradesh 228001</p>
+            </div>
+
+            <div class="mt-6 mb-2">
+                <p class="text-xs font-cinzel font-bold text-gold-dark tracking-widest uppercase">
+                    GANPATI BAPPA MORYA
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Countdown Logic ---
+        function updateCountdown() {
+            // Target: Ganesh Chaturthi 2026 (Sept 14, 2026)
+            const targetDate = new Date('September 14, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // --- Gold Ambient Particle System ---
+        const bgCanvas = document.getElementById('particles-js');
+        const bgCtx = bgCanvas.getContext('2d');
+        let bgParticles = [];
+
+        function resizeBgCanvas() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeBgCanvas);
+        resizeBgCanvas();
+
+        class BgParticle {
+            constructor() {
+                this.x = Math.random() * bgCanvas.width;
+                this.y = Math.random() * bgCanvas.height;
+                this.size = Math.random() * 2.5 + 1;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = -(Math.random() * 0.4 + 0.1);
+                const colors = ['rgba(230, 81, 0, 0.25)', 'rgba(212, 175, 55, 0.35)', 'rgba(122, 0, 0, 0.15)'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.y < 0 || this.x < 0 || this.x > bgCanvas.width) {
+                    this.y = bgCanvas.height;
+                    this.x = Math.random() * bgCanvas.width;
+                }
+            }
+            draw() {
+                bgCtx.fillStyle = this.color;
+                bgCtx.beginPath();
+                bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                bgCtx.fill();
+            }
+        }
+
+        function initBgParticles() {
+            bgParticles = [];
+            let count = Math.min(Math.floor(bgCanvas.width / 15), 60);
+            for (let i = 0; i < count; i++) {
+                bgParticles.push(new BgParticle());
+            }
+        }
+
+        function animateBgParticles() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            for (let p of bgParticles) {
+                p.update();
+                p.draw();
+            }
+            requestAnimationFrame(animateBgParticles);
+        }
+
+        initBgParticles();
+        animateBgParticles();
+
+        // --- Flower Petal Shower Interactive Feature ---
+        const petalCanvas = document.getElementById('petals-canvas');
+        const petalCtx = petalCanvas.getContext('2d');
+        let petals = [];
+
+        function resizePetalCanvas() {
+            petalCanvas.width = window.innerWidth;
+            petalCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizePetalCanvas);
+        resizePetalCanvas();
+
+        class Petal {
+            constructor() {
+                this.x = Math.random() * petalCanvas.width;
+                this.y = -20;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 2 + 1.5;
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = Math.random() * 2 - 1;
+                // Marigold/Orange/Rose colors
+                const petalColors = ['#FF8F00', '#FF6F00', '#E65100', '#FFAB00', '#D81B60'];
+                this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y / 30) + this.speedX;
+                this.rotation += this.rotSpeed;
+            }
+            draw() {
+                petalCtx.save();
+                petalCtx.translate(this.x, this.y);
+                petalCtx.rotate((this.rotation * Math.PI) / 180);
+                petalCtx.fillStyle = this.color;
+                petalCtx.beginPath();
+                // Draw petal shape
+                petalCtx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                petalCtx.fill();
+                petalCtx.restore();
+            }
+        }
+
+        function triggerFlowerShower() {
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    petals.push(new Petal());
+                }, i * 50);
+            }
+        }
+
+        function animatePetals() {
+            petalCtx.clearRect(0, 0, petalCanvas.width, petalCanvas.height);
+            for (let i = petals.length - 1; i >= 0; i--) {
+                petals[i].update();
+                petals[i].draw();
+                if (petals[i].y > petalCanvas.height + 20) {
+                    petals.splice(i, 1);
+                }
+            }
+            requestAnimationFrame(animatePetals);
+        }
+
+        document.getElementById('flowerBtn').addEventListener('click', triggerFlowerShower);
+        animatePetals();
+    </script>
+</body>
+</html>
