@@ -161,20 +161,6 @@
             to { background-position: 200% center; }
         }
 
-        /* NEW: Staggered Fade In Up */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0; /* starts hidden */
-        }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FFFDF7; }
@@ -273,28 +259,28 @@
                 <!-- Countdown Grid with Enhanced Ring Badges -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6" id="countdown">
                     <!-- Days -->
-                    <div class="fade-in-up delay-100 timer-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
+                    <div class="timer-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
                         <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-amber-50 to-white border border-gold/40 flex items-center justify-center shadow-inner mb-2">
                             <span id="days" class="text-3xl sm:text-5xl font-extrabold text-maroon font-cinzel tracking-tight drop-shadow-sm">00</span>
                         </div>
                         <span class="text-[11px] sm:text-xs text-maroon-dark font-bold uppercase tracking-wider bg-gold/10 px-3 py-0.5 rounded-md border border-gold/20">दिन</span>
                     </div>
                     <!-- Hours -->
-                    <div class="fade-in-up delay-200 timer-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
+                    <div class="timer-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
                         <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-amber-50 to-white border border-gold/40 flex items-center justify-center shadow-inner mb-2">
                             <span id="hours" class="text-3xl sm:text-5xl font-extrabold text-maroon font-cinzel tracking-tight drop-shadow-sm">00</span>
                         </div>
                         <span class="text-[11px] sm:text-xs text-maroon-dark font-bold uppercase tracking-wider bg-gold/10 px-3 py-0.5 rounded-md border border-gold/20">घंटे</span>
                     </div>
                     <!-- Minutes -->
-                    <div class="fade-in-up delay-300 timer-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
+                    <div class="timer-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
                         <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-amber-50 to-white border border-gold/40 flex items-center justify-center shadow-inner mb-2">
                             <span id="minutes" class="text-3xl sm:text-5xl font-extrabold text-maroon font-cinzel tracking-tight drop-shadow-sm">00</span>
                         </div>
                         <span class="text-[11px] sm:text-xs text-maroon-dark font-bold uppercase tracking-wider bg-gold/10 px-3 py-0.5 rounded-md border border-gold/20">मिनट</span>
                     </div>
                     <!-- Seconds -->
-                    <div class="fade-in-up delay-400 timer-card timer-seconds-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
+                    <div class="timer-card timer-seconds-card rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center">
                         <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-orange-100 to-amber-50 border border-bhagwa/50 flex items-center justify-center shadow-inner mb-2">
                             <span id="seconds" class="text-3xl sm:text-5xl font-extrabold text-bhagwa font-cinzel tracking-tight drop-shadow-sm">00</span>
                         </div>
