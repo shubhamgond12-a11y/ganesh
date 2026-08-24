@@ -93,7 +93,7 @@
             animation: gentle-float 4s ease-in-out infinite;
         }
 
-        /* NEW: Swinging Bell Animation */
+        /* Swinging Bell Animation */
         @keyframes swing {
             0% { transform: rotate(12deg); }
             50% { transform: rotate(-12deg); }
@@ -108,7 +108,7 @@
             transform-origin: top center;
         }
 
-        /* NEW: Text Shimmer Effect */
+        /* Text Shimmer Effect */
         .text-shimmer {
             background-size: 200% auto;
             animation: shimmer 4s linear infinite;
@@ -117,14 +117,14 @@
             to { background-position: 200% center; }
         }
 
-        /* NEW: Staggered Fade In Up */
+        /* Staggered Fade In Up */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .fade-in-up {
             animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0; /* starts hidden */
+            opacity: 0;
         }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
@@ -146,7 +146,7 @@
     <!-- Decorative Top Border Pattern -->
     <div class="h-2 w-full bg-gradient-to-r from-maroon via-bhagwa to-gold relative z-40"></div>
 
-    <!-- NEW: Hanging Decorative Bells -->
+    <!-- Hanging Decorative Bells -->
     <!-- Left Bell -->
     <div class="absolute top-2 left-4 md:left-12 lg:left-24 z-20 animate-swing">
         <div class="w-1 h-12 md:h-20 bg-gradient-to-b from-maroon to-gold mx-auto"></div>
@@ -179,29 +179,40 @@
         </svg>
     </div>
 
-    <div class="relative z-10 flex-grow flex flex-col items-center justify-between px-4 sm:px-6 py-12 md:py-16 max-w-5xl mx-auto w-full">
+    <div class="relative z-10 flex-grow flex flex-col items-center justify-between px-4 sm:px-6 py-10 md:py-14 max-w-5xl mx-auto w-full">
         
         <!-- Header Section -->
-        <header class="text-center flex flex-col items-center w-full mt-4">
-            <div class="inline-flex items-center justify-center space-x-2 bg-bhagwa-soft border border-bhagwa/20 px-4 py-1.5 rounded-full mb-4">
+        <header class="text-center flex flex-col items-center w-full">
+            <div class="inline-flex items-center justify-center space-x-2 bg-bhagwa-soft border border-bhagwa/20 px-4 py-1.5 rounded-full mb-3 shadow-sm">
                 <span class="text-bhagwa text-xs sm:text-sm font-semibold tracking-widest uppercase">॥ श्री गणेशाय नमः ॥</span>
             </div>
 
-            <h2 class="text-base sm:text-xl md:text-2xl font-cinzel font-bold text-maroon tracking-wider mb-4 drop-shadow-sm">
+            <h2 class="text-base sm:text-xl md:text-2xl font-cinzel font-bold text-maroon tracking-wider drop-shadow-sm">
                 श्री गणेश एकता पूजा समिति
             </h2>
         </header>
 
         <!-- Main Hero Section -->
-        <main class="w-full flex flex-col items-center justify-center text-center my-4 sm:my-8">
+        <main class="w-full flex flex-col items-center justify-center text-center my-4 sm:my-6">
             
-            <div class="mb-8 sm:mb-10">
-                <!-- NEW: Applied text-shimmer class and animated gradient -->
-                <h1 class="font-rozha text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-[linear-gradient(110deg,#E65100,40%,#FFD700,50%,#7A0000)] text-shimmer title-glow-light leading-tight px-4 py-2">
+            <!-- OFFICIAL EMBLEM / LOGO -->
+            <div class="relative my-4 group cursor-pointer animate-float">
+                <!-- Glowing Aura Behind Logo -->
+                <div class="absolute -inset-2 bg-gradient-to-r from-gold via-bhagwa-light to-gold-bright rounded-full blur-lg opacity-60 group-hover:opacity-100 transition duration-500 group-hover:scale-105 animate-pulse-glow"></div>
+                
+                <!-- Circular Border Frame & Logo Image -->
+                <div class="relative w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full p-1.5 bg-gradient-to-br from-gold-bright via-bhagwa to-maroon shadow-2xl overflow-hidden mx-auto border-2 border-gold/70 ring-4 ring-gold/20">
+                    <img src="logo.png" alt="श्री गणेश एकता पूजा समिति - सुल्तानपुर के राजा लोगो" class="w-full h-full object-cover rounded-full shadow-inner transform group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+            <div class="mb-6 sm:mb-8">
+                <!-- Heading -->
+                <h1 class="font-rozha text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-[linear-gradient(110deg,#E65100,40%,#FFD700,50%,#7A0000)] text-shimmer title-glow-light leading-tight px-4 py-1">
                     सुल्तानपुर <span class="text-bhagwa font-normal text-4xl sm:text-5xl md:text-7xl">के</span> राजा
                 </h1>
                 
-                <p class="mt-4 text-lg sm:text-2xl font-cinzel font-bold text-bhagwa tracking-widest animate-pulse-glow">
+                <p class="mt-2 sm:mt-3 text-lg sm:text-2xl font-cinzel font-bold text-bhagwa tracking-widest animate-pulse-glow">
                     — भव्य आगमन जल्द —
                 </p>
             </div>
@@ -219,22 +230,22 @@
                 </p>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5" id="countdown">
-                    <!-- Days (Fade in delay 100) -->
+                    <!-- Days -->
                     <div class="fade-in-up delay-100 flex flex-col items-center justify-center bg-white/90 rounded-xl p-3 sm:p-5 border border-gold/30 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
                         <span id="days" class="text-3xl sm:text-5xl font-bold text-maroon font-cinzel">00</span>
                         <span class="text-[10px] sm:text-xs text-gray-600 mt-1 uppercase font-semibold tracking-wider">दिन</span>
                     </div>
-                    <!-- Hours (Fade in delay 200) -->
+                    <!-- Hours -->
                     <div class="fade-in-up delay-200 flex flex-col items-center justify-center bg-white/90 rounded-xl p-3 sm:p-5 border border-gold/30 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
                         <span id="hours" class="text-3xl sm:text-5xl font-bold text-maroon font-cinzel">00</span>
                         <span class="text-[10px] sm:text-xs text-gray-600 mt-1 uppercase font-semibold tracking-wider">घंटे</span>
                     </div>
-                    <!-- Minutes (Fade in delay 300) -->
+                    <!-- Minutes -->
                     <div class="fade-in-up delay-300 flex flex-col items-center justify-center bg-white/90 rounded-xl p-3 sm:p-5 border border-gold/30 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
                         <span id="minutes" class="text-3xl sm:text-5xl font-bold text-maroon font-cinzel">00</span>
                         <span class="text-[10px] sm:text-xs text-gray-600 mt-1 uppercase font-semibold tracking-wider">मिनट</span>
                     </div>
-                    <!-- Seconds (Fade in delay 400) -->
+                    <!-- Seconds -->
                     <div class="fade-in-up delay-400 flex flex-col items-center justify-center bg-bhagwa-soft rounded-xl p-3 sm:p-5 border border-bhagwa/30 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
                         <span id="seconds" class="text-3xl sm:text-5xl font-bold text-bhagwa font-cinzel">00</span>
                         <span class="text-[10px] sm:text-xs text-bhagwa font-semibold mt-1 uppercase tracking-wider">सेकंड</span>
@@ -259,7 +270,7 @@
             </div>
 
             <!-- Live Updates Section -->
-            <div class="mt-10 flex flex-col items-center">
+            <div class="mt-8 sm:mt-10 flex flex-col items-center">
                 <p class="text-maroon-dark font-medium text-sm sm:text-base mb-3 bg-white/80 px-4 py-1.5 rounded-full border border-gold/30 shadow-sm backdrop-blur-sm">
                     लाइव अपडेट के लिए स्कैन करें या आइकन पर क्लिक करें
                 </p>
@@ -269,7 +280,7 @@
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.instagram.com/_ghumakkad_boys_/?__d=1%3Futm_source%25OTRAS&color=7A0000" alt="Instagram QR Code" class="w-20 h-20 sm:w-24 sm:h-24 opacity-90 hover:opacity-100 transition-opacity">
                     </div>
                     
-                    <!-- Clickable Icon/Link -->
+                    <!-- Clickable Instagram Icon -->
                     <a href="https://www.instagram.com/_ghumakkad_boys_/?__d=1%3Futm_source%25OTRAS" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
@@ -281,7 +292,7 @@
         </main>
 
         <!-- Location & Footer Section -->
-        <footer class="w-full text-center mt-8">
+        <footer class="w-full text-center mt-6">
             <div class="card-light rounded-xl p-4 sm:p-6 max-w-2xl mx-auto flex flex-col items-center justify-center transition-all hover:border-gold-bright">
                 <div class="w-10 h-10 rounded-full bg-bhagwa-soft border border-bhagwa/30 flex items-center justify-center text-bhagwa mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -293,7 +304,7 @@
                 <p class="text-xs sm:text-sm text-gray-700 font-medium mt-0.5">विवेक नगर, सुल्तानपुर, उत्तर प्रदेश 228001</p>
             </div>
 
-            <div class="mt-8 mb-4">
+            <div class="mt-6 mb-2">
                 <p class="text-sm font-cinzel font-bold text-gold-dark tracking-widest uppercase animate-pulse-glow">
                     ॥ गणपति बाप्पा मोरया ॥
                 </p>
@@ -389,7 +400,7 @@
         initBgParticles();
         animateBgParticles();
 
-        // --- NEW: Interactive Mouse Sparkle Trail ---
+        // --- Interactive Mouse Sparkle Trail ---
         const sparkleCanvas = document.getElementById('sparkle-canvas');
         const spCtx = sparkleCanvas.getContext('2d');
         let sparkles = [];
@@ -405,13 +416,11 @@
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x;
             mouse.y = e.y;
-            // Add sparkles when mouse moves
             for (let i = 0; i < 2; i++) {
                 sparkles.push(new Sparkle(mouse.x, mouse.y));
             }
         });
 
-        // Touch support for mobiles
         window.addEventListener('touchmove', (e) => {
             if(e.touches.length > 0) {
                 mouse.x = e.touches[0].clientX;
@@ -430,14 +439,13 @@
                 this.speedX = Math.random() * 2 - 1;
                 this.speedY = Math.random() * 2 - 1;
                 this.life = 1.0;
-                // Gold and bright orange sparkles
                 const colors = ['212, 175, 55', '255, 215, 0', '230, 81, 0'];
                 this.rgb = colors[Math.floor(Math.random() * colors.length)];
             }
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                this.life -= 0.03; // Fade out speed
+                this.life -= 0.03;
                 this.size -= 0.05;
             }
             draw() {
@@ -455,7 +463,6 @@
             for (let i = sparkles.length - 1; i >= 0; i--) {
                 sparkles[i].update();
                 sparkles[i].draw();
-                // Remove dead sparkles
                 if (sparkles[i].life <= 0 || sparkles[i].size <= 0) {
                     sparkles.splice(i, 1);
                 }
@@ -464,7 +471,7 @@
         }
         animateSparkles();
 
-        // --- Flower Petal Shower Interactive Feature ---
+        // --- Flower Petal Shower Feature ---
         const petalCanvas = document.getElementById('petals-canvas');
         const petalCtx = petalCanvas.getContext('2d');
         let petals = [];
@@ -485,7 +492,6 @@
                 this.speedX = Math.random() * 1.5 - 0.75;
                 this.rotation = Math.random() * 360;
                 this.rotSpeed = Math.random() * 2 - 1;
-                // Marigold/Orange/Rose colors
                 const petalColors = ['#FF8F00', '#FF6F00', '#E65100', '#FFAB00', '#D81B60'];
                 this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
             }
@@ -500,7 +506,6 @@
                 petalCtx.rotate((this.rotation * Math.PI) / 180);
                 petalCtx.fillStyle = this.color;
                 petalCtx.beginPath();
-                // Draw petal shape
                 petalCtx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
                 petalCtx.fill();
                 petalCtx.restore();
