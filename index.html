@@ -67,20 +67,16 @@
             0%, 100% {
                 text-shadow: 
                     0 0 15px rgba(255, 112, 67, 0.7),
-                    0 0 30px rgba(255, 215, 0, 0.6),
-                    0 0 45px rgba(230, 81, 0, 0.4);
-                filter: drop-shadow(0 4px 12px rgba(122, 0, 0, 0.3));
+                    0 0 30px rgba(255, 215, 0, 0.6);
             }
             50% {
                 text-shadow: 
                     0 0 25px rgba(255, 215, 0, 0.95),
-                    0 0 50px rgba(230, 81, 0, 0.85),
-                    0 0 75px rgba(255, 112, 67, 0.75);
-                filter: drop-shadow(0 6px 22px rgba(230, 81, 0, 0.6));
+                    0 0 50px rgba(230, 81, 0, 0.85);
             }
         }
         .royal-title-glow {
-            animation: divineGlow 3s ease-in-out infinite;
+            animation: divineGlow 4s ease-in-out infinite;
         }
 
         /* Card Light & Regal Timer Styling */
@@ -123,13 +119,13 @@
             to { box-shadow: 0 0 22px rgba(230, 81, 0, 0.45); }
         }
 
-        /* Pulsing animation */
+        /* Pulsing animation - Optimized to remove expensive scale on blur */
         @keyframes pulse-glow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.02); }
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
         }
         .animate-pulse-glow {
-            animation: pulse-glow 3s infinite ease-in-out;
+            animation: pulse-glow 4s infinite ease-in-out;
         }
 
         /* Floating effect */
@@ -402,8 +398,11 @@
         let bgParticles = [];
 
         function resizeBgCanvas() {
-            bgCanvas.width = window.innerWidth;
-            bgCanvas.height = window.innerHeight;
+            // Prevent resize on mobile vertical scroll to stop canvas flashing/refreshing
+            if (bgCanvas.width !== window.innerWidth || bgCanvas.height === 150) {
+                bgCanvas.width = window.innerWidth;
+                bgCanvas.height = window.innerHeight;
+            }
         }
         window.addEventListener('resize', resizeBgCanvas);
         resizeBgCanvas();
@@ -461,8 +460,11 @@
         let mouse = { x: null, y: null };
 
         function resizeSparkleCanvas() {
-            sparkleCanvas.width = window.innerWidth;
-            sparkleCanvas.height = window.innerHeight;
+            // Prevent flashing on mobile vertical scroll
+            if (sparkleCanvas.width !== window.innerWidth || sparkleCanvas.height === 150) {
+                sparkleCanvas.width = window.innerWidth;
+                sparkleCanvas.height = window.innerHeight;
+            }
         }
         window.addEventListener('resize', resizeSparkleCanvas);
         resizeSparkleCanvas();
@@ -470,9 +472,11 @@
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x;
             mouse.y = e.y;
-            // Add sparkles when mouse moves
-            for (let i = 0; i < 2; i++) {
-                sparkles.push(new Sparkle(mouse.x, mouse.y));
+            // Add sparkles when mouse moves, capped to prevent CPU lag
+            if (sparkles.length < 80) {
+                for (let i = 0; i < 2; i++) {
+                    sparkles.push(new Sparkle(mouse.x, mouse.y));
+                }
             }
         });
 
@@ -481,8 +485,10 @@
             if(e.touches.length > 0) {
                 mouse.x = e.touches[0].clientX;
                 mouse.y = e.touches[0].clientY;
-                for (let i = 0; i < 2; i++) {
-                    sparkles.push(new Sparkle(mouse.x, mouse.y));
+                if (sparkles.length < 80) {
+                    for (let i = 0; i < 2; i++) {
+                        sparkles.push(new Sparkle(mouse.x, mouse.y));
+                    }
                 }
             }
         }, {passive: true});
@@ -535,8 +541,11 @@
         let petals = [];
 
         function resizePetalCanvas() {
-            petalCanvas.width = window.innerWidth;
-            petalCanvas.height = window.innerHeight;
+            // Prevent flashing on mobile vertical scroll
+            if (petalCanvas.width !== window.innerWidth || petalCanvas.height === 150) {
+                petalCanvas.width = window.innerWidth;
+                petalCanvas.height = window.innerHeight;
+            }
         }
         window.addEventListener('resize', resizePetalCanvas);
         resizePetalCanvas();
