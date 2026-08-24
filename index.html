@@ -49,7 +49,7 @@
         }
 
         /* Ambient particles and interactive canvases */
-        #particles-js, #petals-canvas, #sparkle-canvas {
+        #particles-js, #petals-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -59,24 +59,46 @@
         }
         
         #particles-js { z-index: 1; }
-        #sparkle-canvas { z-index: 20; }
         #petals-canvas { z-index: 30; }
 
         /* Divine Royal Title Glow Effect */
         @keyframes divineGlow {
             0%, 100% {
-                text-shadow: 
-                    0 0 15px rgba(255, 112, 67, 0.7),
-                    0 0 30px rgba(255, 215, 0, 0.6);
+                filter: drop-shadow(0 0 15px rgba(255, 112, 67, 0.8)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
             }
             50% {
-                text-shadow: 
-                    0 0 25px rgba(255, 215, 0, 0.95),
-                    0 0 50px rgba(230, 81, 0, 0.85);
+                filter: drop-shadow(0 0 28px rgba(255, 215, 0, 1)) drop-shadow(0 0 50px rgba(230, 81, 0, 0.9));
             }
         }
         .royal-title-glow {
-            animation: divineGlow 4s ease-in-out infinite;
+            animation: divineGlow 3.5s ease-in-out infinite;
+        }
+
+        /* Metallic Gold & Crimson Shine Effect moving Left to Right (Slower Pace) */
+        .text-shine-ltr {
+            background: linear-gradient(
+                110deg,
+                #E65100 0%,
+                #7A0000 30%,
+                #FFD700 45%,
+                #FFFFFF 50%,
+                #FFD700 55%,
+                #7A0000 70%,
+                #E65100 100%
+            );
+            background-size: 250% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineSweep 7s ease-in-out infinite;
+        }
+
+        @keyframes shineSweep {
+            0% {
+                background-position: 150% 0;
+            }
+            100% {
+                background-position: -50% 0;
+            }
         }
 
         /* Card Light & Regal Timer Styling */
@@ -170,7 +192,6 @@
 <body class="antialiased selection:bg-bhagwa selection:text-white flex flex-col justify-between min-h-screen">
 
     <canvas id="particles-js"></canvas>
-    <canvas id="sparkle-canvas"></canvas>
     <canvas id="petals-canvas"></canvas>
 
     <!-- Decorative Top Border Pattern -->
@@ -229,9 +250,9 @@
                 <!-- Ambient Glowing Aura Behind Title -->
                 <div class="absolute inset-0 bg-gradient-to-r from-bhagwa/20 via-gold/30 to-maroon/20 blur-3xl rounded-full opacity-70 animate-pulse-glow -z-10"></div>
 
-                <!-- Enhanced Glowing Title -->
-                <h1 class="font-rozha text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-[linear-gradient(110deg,#E65100,35%,#FFD700,50%,#7A0000)] text-shimmer royal-title-glow leading-tight px-4 py-2">
-                    सुल्तानपुर <span class="text-bhagwa font-normal text-4xl sm:text-5xl md:text-7xl">के</span> राजा
+                <!-- Enhanced Glowing Title with Left-to-Right Shine -->
+                <h1 class="font-rozha text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-shine-ltr royal-title-glow leading-tight px-4 py-2">
+                    सुल्तानपुर <span class="font-normal text-4xl sm:text-5xl md:text-7xl">के</span> राजा
                 </h1>
                 
                 <p class="mt-4 text-lg sm:text-2xl font-cinzel font-bold text-bhagwa tracking-widest animate-pulse-glow drop-shadow-sm">
@@ -438,88 +459,6 @@
 
         initBgParticles();
         animateBgParticles();
-
-        // --- NEW: Interactive Mouse Sparkle Trail ---
-        const sparkleCanvas = document.getElementById('sparkle-canvas');
-        const spCtx = sparkleCanvas.getContext('2d');
-        let sparkles = [];
-        let mouse = { x: null, y: null };
-
-        function resizeSparkleCanvas() {
-            // Prevent flashing on mobile vertical scroll
-            if (sparkleCanvas.width !== window.innerWidth || sparkleCanvas.height === 150) {
-                sparkleCanvas.width = window.innerWidth;
-                sparkleCanvas.height = window.innerHeight;
-            }
-        }
-        window.addEventListener('resize', resizeSparkleCanvas);
-        resizeSparkleCanvas();
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-            // Add sparkles when mouse moves, capped to prevent CPU lag
-            if (sparkles.length < 80) {
-                for (let i = 0; i < 2; i++) {
-                    sparkles.push(new Sparkle(mouse.x, mouse.y));
-                }
-            }
-        });
-
-        // Touch support for mobiles
-        window.addEventListener('touchmove', (e) => {
-            if(e.touches.length > 0) {
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
-                if (sparkles.length < 80) {
-                    for (let i = 0; i < 2; i++) {
-                        sparkles.push(new Sparkle(mouse.x, mouse.y));
-                    }
-                }
-            }
-        }, {passive: true});
-
-        class Sparkle {
-            constructor(x, y) {
-                this.x = x + (Math.random() * 20 - 10);
-                this.y = y + (Math.random() * 20 - 10);
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
-                this.life = 1.0;
-                // Gold and bright orange sparkles
-                const colors = ['212, 175, 55', '255, 215, 0', '230, 81, 0'];
-                this.rgb = colors[Math.floor(Math.random() * colors.length)];
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.life -= 0.03; // Fade out speed
-                this.size -= 0.05;
-            }
-            draw() {
-                if (this.life > 0 && this.size > 0) {
-                    spCtx.fillStyle = `rgba(${this.rgb}, ${this.life})`;
-                    spCtx.beginPath();
-                    spCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    spCtx.fill();
-                }
-            }
-        }
-
-        function animateSparkles() {
-            spCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
-            for (let i = sparkles.length - 1; i >= 0; i--) {
-                sparkles[i].update();
-                sparkles[i].draw();
-                // Remove dead sparkles
-                if (sparkles[i].life <= 0 || sparkles[i].size <= 0) {
-                    sparkles.splice(i, 1);
-                }
-            }
-            requestAnimationFrame(animateSparkles);
-        }
-        animateSparkles();
 
         // --- Flower Petal Shower Interactive Feature ---
         const petalCanvas = document.getElementById('petals-canvas');
